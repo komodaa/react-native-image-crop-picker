@@ -272,12 +272,12 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
-  - RNImageCropPicker (0.36.2):
+  - RNImageCropPicker (0.36.3):
     - React-Core
     - React-RCTImage
-    - RNImageCropPicker/QBImagePickerController (= 0.36.2)
+    - RNImageCropPicker/QBImagePickerController (= 0.36.3)
     - TOCropViewController
-  - RNImageCropPicker/QBImagePickerController (0.36.2):
+  - RNImageCropPicker/QBImagePickerController (0.36.3):
     - React-Core
     - React-RCTImage
     - TOCropViewController
@@ -315,7 +315,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - RNImageCropPicker (from `../node_modules/komodaa-react-native-image-crop-picker`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -381,7 +381,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNImageCropPicker:
-    :path: "../node_modules/react-native-image-crop-picker"
+    :path: "../node_modules/komodaa-react-native-image-crop-picker"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 

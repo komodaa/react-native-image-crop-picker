@@ -6,7 +6,7 @@ platform :ios, '10.0'
 target 'example' do
   config = use_native_modules!
 
-  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+  pod 'RNImageCropPicker', :path => '../node_modules/komodaa-react-native-image-crop-picker'
 
   use_react_native!(
     :path => config[:reactNativePath],

@@ -107,7 +107,7 @@ class PickerModule extends ReactContextBaseJavaModule implements ActivityEventLi
     }
 
     private String getTmpDir(Activity activity) {
-        String tmpDir = activity.getCacheDir() + "/react-native-image-crop-picker";
+        String tmpDir = activity.getCacheDir() + "/komodaa-react-native-image-crop-picker";
         new File(tmpDir).mkdir();
 
         return tmpDir;

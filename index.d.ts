@@ -1,4 +1,4 @@
-declare module "react-native-image-crop-picker" {
+declare module "komodaa-react-native-image-crop-picker" {
     /**
      * AVAssetExportPreset presets.
      *
@@ -91,7 +91,7 @@ declare module "react-native-image-crop-picker" {
         /**
          * Whether to default to the front camera when opened. Please note that not all
          * Android devices handle this parameter, see
-         * [issue #1058](https://github.com/ivpusic/react-native-image-crop-picker/issues/1058).
+         * [issue #1058](https://github.com/ivpusic/komodaa-react-native-image-crop-picker/issues/1058).
          *
          * @default false
          */

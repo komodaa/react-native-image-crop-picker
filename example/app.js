@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from 'komodaa-react-native-image-crop-picker';
 import Video from 'react-native-video';
 
 const styles = StyleSheet.create({
