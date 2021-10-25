@@ -114,11 +114,6 @@ int getRotationInDegreesForOrientationTag(int orientationTag) {
         return inSampleSize;
     }
 
-    private boolean shouldSetOrientation(String orientation) {
-        return !orientation.equals(String.valueOf(ExifInterface.ORIENTATION_NORMAL))
-                && !orientation.equals(String.valueOf(ExifInterface.ORIENTATION_UNDEFINED));
-    }
-
     File compressImage(final Context context, final ReadableMap options, final String originalImagePath, final BitmapFactory.Options bitmapOptions) throws IOException {
         Integer maxWidth = options.hasKey("compressImageMaxWidth") ? options.getInt("compressImageMaxWidth") : null;
         Integer maxHeight = options.hasKey("compressImageMaxHeight") ? options.getInt("compressImageMaxHeight") : null;
