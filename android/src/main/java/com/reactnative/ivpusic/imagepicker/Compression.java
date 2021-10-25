@@ -8,6 +8,7 @@ import android.media.ExifInterface;
 import android.os.Environment;
 import android.util.Log;
 import android.util.Pair;
+import android.graphics.Matrix;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReadableMap;
@@ -53,9 +54,14 @@ class Compression {
 
         // Use original image exif orientation data to preserve image orientation for the resized bitmap
         ExifInterface originalExif = new ExifInterface(originalImagePath);
-        String originalOrientation = originalExif.getAttribute(ExifInterface.TAG_ORIENTATION);
+        int originalOrientation = originalExif.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+
+        Matrix rotationMatrix = new Matrix();
+        int rotationAngleInDegrees = getRotationInDegreesForOrientationTag(originalOrientation);
+        rotationMatrix.postRotate(rotationAngleInDegrees);
 
         bitmap = Bitmap.createScaledBitmap(bitmap, targetWidth, targetHeight, true);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotationMatrix, true);
 
         File imageDirectory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 
@@ -67,20 +73,28 @@ class Compression {
         File resizeImageFile = new File(imageDirectory, UUID.randomUUID() + ".jpg");
 
         OutputStream os = new BufferedOutputStream(new FileOutputStream(resizeImageFile));
-        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, os);
-
-        // Don't set unnecessary exif attribute
-        if (shouldSetOrientation(originalOrientation)) {
-            ExifInterface exif = new ExifInterface(resizeImageFile.getAbsolutePath());
-            exif.setAttribute(ExifInterface.TAG_ORIENTATION, originalOrientation);
-            exif.saveAttributes();
-        }
+        rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, quality, os);
 
         os.close();
         bitmap.recycle();
+        rotatedBitmap.recycle();
 
         return resizeImageFile;
     }
+
+int getRotationInDegreesForOrientationTag(int orientationTag) {
+        switch(orientationTag){
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                return 90;
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                return -90;
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                return 180;
+            default:
+                return 0;
+        }
+    }
+
 
     private int calculateInSampleSize(int originalWidth, int originalHeight, int requestedWidth, int requestedHeight) {
         int inSampleSize = 1;
